@@ -3381,7 +3381,6 @@ static mtp_bool __receive_temp_file_first_packet(mtp_char *data,
 static mtp_bool __receive_temp_file_next_packets(mtp_char *data,
 		mtp_int32 data_len)
 {
-//	mtp_uint32 rx_size = _get_rx_pkt_size();
 	mtp_uint32 *data_sz = &g_mgr->ftemp_st.data_size;
 	mtp_char *buffer = g_mgr->ftemp_st.temp_buff;
 	uint64_t elapsed;
