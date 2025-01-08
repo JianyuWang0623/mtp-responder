@@ -359,14 +359,14 @@ DONE:
 				(hdlr->last_opcode == MTP_OPCODE_SENDOBJECTPROPLIST)) &&
 			((hdlr->last_fmt_code != PTP_FMT_ASSOCIATION) &&
 			 (hdlr->last_fmt_code != PTP_FMT_UNDEF))) {
-		ERR("Processed, last_opcode[0x%x], last_fmt_code[%d]\n",
+		DBG("Processed, last_opcode[0x%x], last_fmt_code[%d]\n",
 				hdlr->last_opcode, hdlr->last_fmt_code);
 
 		if ((hdlr->usb_cmd.code != PTP_OPCODE_SENDOBJECT) &&
 				hdlr->data4_send_obj.is_valid &&
 				hdlr->data4_send_obj.is_data_sent) {
 
-			ERR("Processed, COMMAND[0x%x]!!\n", hdlr->usb_cmd.code);
+			DBG("Processed, COMMAND[0x%x]!!\n", hdlr->usb_cmd.code);
 			store = _device_get_store(hdlr->data4_send_obj.store_id);
 			if (store != NULL) {
 				/*Restore reserved space*/
@@ -2978,7 +2978,7 @@ mtp_bool _cmd_hdlr_send_response(mtp_handler_t *hdlr, mtp_uint16 resp,
 	_device_set_phase(DEVICE_PHASE_IDLE);
 
 	if ((resp == PTP_RESPONSE_OK) && (ret == TRUE)) {
-		ERR("[%s], Opcode[0x%4x], ResponseCode[0x%4x], NumParams[%d]\n",
+		DBG("[%s], Opcode[0x%4x], ResponseCode[0x%4x], NumParams[%d]\n",
 				"SUCCESS", hdlr->usb_cmd.code, resp, num_param);
 	} else {
 		ERR("[%s], Opcode = [0x%4x] ResponseCode[0x%4x], NumParams[%u]\n",
@@ -2999,127 +2999,127 @@ static void __print_command(mtp_uint16 code)
 {
 	switch (code) {
 	case PTP_OPCODE_GETDEVICEINFO:
-		ERR("COMMAND ======== GET DEVICE INFO===========");
+		DBG("COMMAND ======== GET DEVICE INFO===========");
 		break;
 	case PTP_OPCODE_OPENSESSION:
-		ERR("COMMAND ======== OPEN SESSION ===========");
+		DBG("COMMAND ======== OPEN SESSION ===========");
 		break;
 	case PTP_OPCODE_CLOSESESSION:
-		ERR("COMMAND ======== CLOSE SESSION ===========");
+		DBG("COMMAND ======== CLOSE SESSION ===========");
 		break;
 	case PTP_OPCODE_GETSTORAGEIDS:
-		ERR("COMMAND ======== GET STORAGE IDS ===========");
+		DBG("COMMAND ======== GET STORAGE IDS ===========");
 		break;
 	case PTP_OPCODE_GETSTORAGEINFO:
-		ERR("COMMAND ======== GET STORAGE INFO ===========");
+		DBG("COMMAND ======== GET STORAGE INFO ===========");
 		break;
 	case PTP_OPCODE_GETNUMOBJECTS:
-		ERR("COMMAND ======== GET NUM OBJECTS ===========");
+		DBG("COMMAND ======== GET NUM OBJECTS ===========");
 		break;
 	case PTP_OPCODE_GETOBJECTHANDLES:
-		ERR("COMMAND ======== GET OBJECT HANDLES ===========");
+		DBG("COMMAND ======== GET OBJECT HANDLES ===========");
 		break;
 	case PTP_OPCODE_GETOBJECTINFO:
-		ERR("COMMAND ======== GET OBJECT INFO ===========");
+		DBG("COMMAND ======== GET OBJECT INFO ===========");
 		break;
 	case PTP_OPCODE_GETOBJECT:
-		ERR("COMMAND ======== GET OBJECT ===========");
+		DBG("COMMAND ======== GET OBJECT ===========");
 		break;
 	case PTP_OPCODE_DELETEOBJECT:
-		ERR("COMMAND ======== DELETE OBJECT ===========");
+		DBG("COMMAND ======== DELETE OBJECT ===========");
 		break;
 	case PTP_OPCODE_SENDOBJECTINFO:
-		ERR("COMMAND ======== SEND OBJECT INFO ===========");
+		DBG("COMMAND ======== SEND OBJECT INFO ===========");
 		break;
 	case PTP_OPCODE_SENDOBJECT:
-		ERR("COMMAND ======== SEND OBJECT ===========");
+		DBG("COMMAND ======== SEND OBJECT ===========");
 		break;
 	case PTP_OPCODE_INITIATECAPTURE:
-		ERR("COMMAND ======== INITIATE CAPTURE ===========");
+		DBG("COMMAND ======== INITIATE CAPTURE ===========");
 		break;
 	case PTP_OPCODE_FORMATSTORE:
-		ERR("COMMAND ======== FORMAT STORE ===========");
+		DBG("COMMAND ======== FORMAT STORE ===========");
 		break;
 	case PTP_OPCODE_RESETDEVICE:
-		ERR("COMMAND ======== RESET DEVICE ===========");
+		DBG("COMMAND ======== RESET DEVICE ===========");
 		break;
 	case PTP_OPCODE_SELFTEST:
-		ERR("COMMAND ======== SELF TEST ===========");
+		DBG("COMMAND ======== SELF TEST ===========");
 		break;
 	case PTP_OPCODE_SETOBJECTPROTECTION:
-		ERR("COMMAND ======== SET OBJECT PROTECTION ===========");
+		DBG("COMMAND ======== SET OBJECT PROTECTION ===========");
 		break;
 	case PTP_OPCODE_POWERDOWN:
-		ERR("COMMAND ======== POWER DOWN ===========");
+		DBG("COMMAND ======== POWER DOWN ===========");
 		break;
 	case PTP_OPCODE_GETDEVICEPROPDESC:
-		ERR("COMMAND ======== GET DEVICE PROP DESC ===========");
+		DBG("COMMAND ======== GET DEVICE PROP DESC ===========");
 		break;
 	case PTP_OPCODE_GETDEVICEPROPVALUE:
-		ERR("COMMAND ======== GET DEVICE PROP VALUE ===========");
+		DBG("COMMAND ======== GET DEVICE PROP VALUE ===========");
 		break;
 	case PTP_OPCODE_SETDEVICEPROPVALUE:
-		ERR("COMMAND ======== SET DEVICE PROP VALUE ===========");
+		DBG("COMMAND ======== SET DEVICE PROP VALUE ===========");
 		break;
 	case PTP_OPCODE_RESETDEVICEPROPVALUE:
-		ERR("COMMAND ======== RESET DEVICE PROP VALUE ===========");
+		DBG("COMMAND ======== RESET DEVICE PROP VALUE ===========");
 		break;
 	case PTP_OPCODE_TERMINATECAPTURE:
-		ERR("COMMAND ======== TERMINATE CAPTURE ===========");
+		DBG("COMMAND ======== TERMINATE CAPTURE ===========");
 		break;
 	case PTP_OPCODE_MOVEOBJECT:
-		ERR("COMMAND ======== MOVE OBJECT ===========");
+		DBG("COMMAND ======== MOVE OBJECT ===========");
 		break;
 	case PTP_OPCODE_COPYOBJECT:
-		ERR("COMMAND ======== COPY OBJECT ===========");
+		DBG("COMMAND ======== COPY OBJECT ===========");
 		break;
 	case PTP_OPCODE_GETPARTIALOBJECT:
-		ERR("COMMAND ======== GET PARTIAL OBJECT ===========");
+		DBG("COMMAND ======== GET PARTIAL OBJECT ===========");
 		break;
 	case PTP_OPCODE_INITIATEOPENCAPTURE:
-		ERR("COMMAND ======== INITIATE OPEN CAPTURE ===========");
+		DBG("COMMAND ======== INITIATE OPEN CAPTURE ===========");
 		break;
 	case MTP_OPCODE_WMP_UNDEFINED:
-		ERR("COMMAND ======== WMP UNDEFINED ==========");
+		DBG("COMMAND ======== WMP UNDEFINED ==========");
 		break;
 	case MTP_OPCODE_WMP_REPORTACQUIREDCONTENT:
-		ERR("COMMAND ======= REPORT ACQUIRED CONTENT =========");
+		DBG("COMMAND ======= REPORT ACQUIRED CONTENT =========");
 		break;
 	case MTP_OPCODE_GETOBJECTPROPSUPPORTED:
-		ERR("COMMAND ======= GET OBJECT PROP SUPPORTED ========");
+		DBG("COMMAND ======= GET OBJECT PROP SUPPORTED ========");
 		break;
 	case MTP_OPCODE_GETOBJECTPROPDESC:
-		ERR("COMMAND ======== GET OBJECT PROP DESC ==========");
+		DBG("COMMAND ======== GET OBJECT PROP DESC ==========");
 		break;
 	case MTP_OPCODE_GETOBJECTPROPVALUE:
-		ERR("COMMAND ======== GET OBJECT PROP VALUE ==========");
+		DBG("COMMAND ======== GET OBJECT PROP VALUE ==========");
 		break;
 	case MTP_OPCODE_SETOBJECTPROPVALUE:
-		ERR("COMMAND ======== SET OBJECT PROP VALUE ==========");
+		DBG("COMMAND ======== SET OBJECT PROP VALUE ==========");
 		break;
 	case MTP_OPCODE_GETOBJECTPROPLIST:
-		ERR("COMMAND ======== GET OBJECT PROP LIST ==========");
+		DBG("COMMAND ======== GET OBJECT PROP LIST ==========");
 		break;
 	case MTP_OPCODE_SETOBJECTPROPLIST:
-		ERR("COMMAND ======== SET OBJECT PROP LIST ==========");
+		DBG("COMMAND ======== SET OBJECT PROP LIST ==========");
 		break;
 	case MTP_OPCODE_GETINTERDEPPROPDESC:
-		ERR("COMMAND ======== GET INTERDEP PROP DESC ==========");
+		DBG("COMMAND ======== GET INTERDEP PROP DESC ==========");
 		break;
 	case MTP_OPCODE_SENDOBJECTPROPLIST:
-		ERR("COMMAND ======== SEND OBJECT PROP LIST ==========");
+		DBG("COMMAND ======== SEND OBJECT PROP LIST ==========");
 		break;
 	case MTP_OPCODE_GETOBJECTREFERENCES:
-		ERR("COMMAND ======== GET OBJECT REFERENCES ==========");
+		DBG("COMMAND ======== GET OBJECT REFERENCES ==========");
 		break;
 	case MTP_OPCODE_SETOBJECTREFERENCES:
-		ERR("COMMAND ======== SET OBJECT REFERENCES ==========");
+		DBG("COMMAND ======== SET OBJECT REFERENCES ==========");
 		break;
 	case MTP_OPCODE_PLAYBACK_SKIP:
-		ERR("COMMAND ======== PLAYBACK SKIP ==========");
+		DBG("COMMAND ======== PLAYBACK SKIP ==========");
 		break;
 	default:
-		ERR("======== UNKNOWN COMMAND ==========");
+		DBG("======== UNKNOWN COMMAND ==========");
 		break;
 	}
 
@@ -3329,7 +3329,7 @@ static mtp_bool __receive_temp_file_first_packet(mtp_char *data,
 		t->filepath = g_strdup(filename);
 	}
 
-	ERR("t->filepath :%s\n", t->filepath);
+	DBG("t->filepath :%s\n", t->filepath);
 
 	if (access(t->filepath, F_OK) == 0) {
 		if (g_mgr->ftemp_st.fhandle != NULL) {
@@ -3418,7 +3418,7 @@ static mtp_bool __receive_temp_file_next_packets(mtp_char *data,
 		elapsed -= (((uint64_t)start_time.tv_sec * NSEC_PER_SEC) + start_time.tv_nsec);
 		elapsed /= NSEC_PER_USEC;
 
-		ERR("mtp statistics log name: %s, file_size:%llu, speed:%u KB/s\n", g_mgr->ftemp_st.filepath, g_mgr->ftemp_st.size_remaining,
+		DBG("mtp statistics log name: %s, file_size:%llu, speed:%u KB/s\n", g_mgr->ftemp_st.filepath, g_mgr->ftemp_st.size_remaining,
 				(unsigned int)(((double)g_mgr->ftemp_st.size_remaining / 1024) / ((double)elapsed / USEC_PER_SEC)));
 
 		__finish_receiving_file_packets(data, data_len);
